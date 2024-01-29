@@ -5,6 +5,7 @@ import { useDispatch } from "react-redux"
 import { Link, useNavigate } from "react-router-dom"
 
 import HomeLayout from "../Layouts/HomeLayout"
+import { createAccount } from "../Redux/Slices/AuthSlice"
 
 function Signup(){
   const dispatch=useDispatch();
@@ -81,7 +82,7 @@ function Signup(){
       formData.append("avatar",signupData.avatar)
 
       //dispatch create account action
-const response=await dispatch(createNewAccount(formData))
+const response=await dispatch(createAccount(formData))
 console.log(response)
 if(response?.payload?.success)
       navigate("/");
