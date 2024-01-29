@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 
 import Footer from "../Components/Footer";
+import { logout } from "../Redux/Slices/AuthSlice";
 
 function HomeLayout({ children }) {
 
@@ -31,8 +32,9 @@ function HomeLayout({ children }) {
 
   async function handleLogout(e){
      e.preventDefault();
-     //const res= await dispatch(logout())
-     //if(res?.payload?.success)
+     const res= await dispatch(logout())
+     console.log("res",res)
+     if(res?.payload?.success)
      navigate("/")
   }
 
@@ -79,12 +81,16 @@ function HomeLayout({ children }) {
             {!isLoggedIn && (
               <li className="absolute t-40 bottom-1 w-[90%]">
                 <div className="w-full flex items-center justify-center">
-                  <button className="btn btn-primary px-4 py-1 font-semibold rounded-md w-3/6">
-                    <Link to="/login">Login</Link>
+                <Link to="/login">
+                  <button className="btn btn-primary px-8 py-1 font-semibold rounded-md w-full">
+                   Login
                   </button>
-                  <button className="btn btn-secondary px-4 py-1 font-semibold rounded-md w-3/6">
-                    <Link to="/signup">Signup</Link>
+                  </Link>
+                  <Link to="/signup">
+                  <button className="btn btn-secondary px-8 py-1 font-semibold rounded-md w-full ">
+                    Signup
                   </button>
+                  </Link>
                 </div>
                 </li>
               )
@@ -92,12 +98,16 @@ function HomeLayout({ children }) {
             {isLoggedIn && (
               <li className="absolute bottom-4 w-[90%]">
                 <div className="w-full flex items-center justify-center">
-                  <button className="btn btn-primary px-4 py-1 font-semibold rounded-md w-3/6">
-                    <Link to="/user/profile">Profile</Link>
+                <Link to="/user/profile">
+                  <button className="btn btn-primary px-8 py-1 font-semibold rounded-md w-full">
+                    Profile
                   </button>
-                  <button className="btn btn-secondary px-4 py-1 font-semibold rounded-md w-3/6">
-                    <Link onClick={handleLogout}>Logout</Link>
+                  </Link>
+                  <Link onClick={handleLogout}>
+                  <button className="btn btn-secondary px-8 py-1 font-semibold rounded-md w-full">
+                    Logout
                   </button>
+                  </Link>
                 </div>
                 </li>
               )
