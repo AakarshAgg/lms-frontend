@@ -15,6 +15,7 @@ import NotFound from './Pages/NotFound'
 import Signup from './Pages/Signup'
 import EditProfile from './Pages/User/EditProfile'
 import Profile from './Pages/User/Profile'
+import Displaylectures from './Pages/Dashboard/Displaylectures'
 
 
 function App() {
@@ -40,6 +41,7 @@ function App() {
       <Route element={<RequiredAuth allowedRoles={["ADMIN","USER"]}/>} >
        <Route path="/user/profile" element={<Profile/>}/>
        <Route path="/user/editprofile" element={<EditProfile/>}/>
+      <Route path='/course/displaylecture' element={<Displaylectures/>}></Route>
       </Route>
 
       <Route path='*' element={<NotFound/>}></Route>
