@@ -8,14 +8,16 @@ import Contact from './Pages/Contact'
 import CourseDescription from './Pages/Course/CourseDescription'
 import CourseList from './Pages/Course/CourseList'
 import CreateCourse from './Pages/Course/CreateCourse'
+import Displaylectures from './Pages/Dashboard/Displaylectures'
 import Denied from './Pages/Denied'
 import HomePage from './Pages/HomePage'
 import Login from './Pages/Login'
 import NotFound from './Pages/NotFound'
+import Checkout from './Pages/Payment/Checkout'
 import Signup from './Pages/Signup'
 import EditProfile from './Pages/User/EditProfile'
 import Profile from './Pages/User/Profile'
-import Displaylectures from './Pages/Dashboard/Displaylectures'
+import CheckoutSuccess from './Pages/Payment/CheckoutSuccess'
 
 
 function App() {
@@ -42,6 +44,8 @@ function App() {
        <Route path="/user/profile" element={<Profile/>}/>
        <Route path="/user/editprofile" element={<EditProfile/>}/>
       <Route path='/course/displaylecture' element={<Displaylectures/>}></Route>
+      <Route path="/checkout" element={<Checkout/>}></Route>
+      <Route path="/checkout/success" element={<CheckoutSuccess/>}></Route>
       </Route>
 
       <Route path='*' element={<NotFound/>}></Route>
