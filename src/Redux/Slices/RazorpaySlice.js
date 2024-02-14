@@ -12,7 +12,8 @@ const initialState={
     monthlySalesRecord:{}
 }
 
-export const getRazorPayId=createAsyncThunk("/razorpay/getId",async()=>{
+// function to get the api key
+export const getRazorPayId=createAsyncThunk("/razorPayId/get",async()=>{
     try{
         const response=await axiosInstance.get("/payments/razorpay-key")
         return response.data;

@@ -14,11 +14,11 @@ import HomePage from './Pages/HomePage'
 import Login from './Pages/Login'
 import NotFound from './Pages/NotFound'
 import Checkout from './Pages/Payment/Checkout'
+import CheckoutFailure from './Pages/Payment/CheckoutFailure'
+import CheckoutSuccess from './Pages/Payment/CheckoutSuccess'
 import Signup from './Pages/Signup'
 import EditProfile from './Pages/User/EditProfile'
 import Profile from './Pages/User/Profile'
-import CheckoutSuccess from './Pages/Payment/CheckoutSuccess'
-import CheckoutFailure from './Pages/Payment/CheckoutFailure'
 
 
 function App() {
@@ -44,10 +44,10 @@ function App() {
       <Route element={<RequiredAuth allowedRoles={["ADMIN","USER"]}/>} >
        <Route path="/user/profile" element={<Profile/>}/>
        <Route path="/user/editprofile" element={<EditProfile/>}/>
-      <Route path='/course/displaylecture' element={<Displaylectures/>}></Route>
       <Route path="/checkout" element={<Checkout/>}></Route>
       <Route path="/checkout/success" element={<CheckoutSuccess/>}></Route>
       <Route path="/checkout/fail" element={<CheckoutFailure/>}></Route>
+      <Route path='/course/displaylectures' element={<Displaylectures/>}></Route>
       </Route>
 
       <Route path='*' element={<NotFound/>}></Route>
