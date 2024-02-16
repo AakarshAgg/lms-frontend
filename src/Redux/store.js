@@ -4,13 +4,15 @@ import authSliceReducer from "./Slices/AuthSlice"
 import courseSliceReducer from "./Slices/CourseSlice"
 import LectureSlice from "./Slices/LectureSlice";
 import razorpaySliceReducer from "./Slices/RazorpaySlice"
+import statSliceReducer from "./Slices/StatSlice";
 
 const store=configureStore({
     reducer:{
         auth:authSliceReducer,
         course:courseSliceReducer,
         razorpay:razorpaySliceReducer,
-        lecture:LectureSlice
+        lecture:LectureSlice,
+        stat:statSliceReducer
     },
     devTools:true
 })

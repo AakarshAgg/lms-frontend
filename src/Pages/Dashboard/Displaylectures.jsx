@@ -12,7 +12,7 @@ function Displaylectures() {
   const { lectures } = useSelector((state) => state.lecture);
   const {role}=useSelector((state)=>state.auth)
 
-  const { currentVideo, setCurrentVideo } = useState(0);
+  const [currentVideo, setCurrentVideo] = useState(0);
 
   async function onLectureDelete(courseId,lectureId){
    await dispatch(deleteCourseLecture({courseId:courseId,lectureId:lectureId}))
@@ -63,7 +63,7 @@ function Displaylectures() {
               <p>Lecture list</p>
               {
                 role==="ADMIN" && (
-                  <button onClick={()=>navigate("/course/addlecture",{state:{...state}})} className="btn-primary px-2 py-1 rounded-md font-semibold text-sm">
+                  <button onClick={()=>navigate("/course/addlecture",{state:{...state}})} className="btn btn-primary px-2 py-1 rounded-md font-semibold text-sm">
                     Add new lecture
                   </button>
                 )
@@ -82,7 +82,7 @@ function Displaylectures() {
 </p>
 {
   role==="ADMIN" && (
-    <button onClick={()=>onLectureDelete(state?._id,lecture?._id)} className="btn-accent px-2 py-1 rounded-md font-semibold text-sm">
+    <button onClick={()=>onLectureDelete(state?._id,lecture?._id)} className="btn btn-accent px-2 py-1 rounded-md font-semibold text-sm">
       Delete lecture
     </button>
   )
@@ -96,7 +96,7 @@ function Displaylectures() {
           </ul>
         </div>):(
           role==="ADMIN" && (
-              <button onClick={()=>navigate("/course/addlecture",{state:{...state}})} className="btn-primary px-2 py-1 rounded-md font-semibold text-sm">
+              <button onClick={()=>navigate("/course/addlecture",{state:{...state}})} className="btn btn-primary px-2 py-1 rounded-md font-semibold text-sm">
                 Add new lecture
               </button>
             )
