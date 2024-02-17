@@ -39,6 +39,7 @@ function AdminDashboard() {
 
   const { allPayments,monthlySalesRecord } = useSelector((state) => state.razorpay);
 
+
   const userData = {
     labels: ["Registered User", "Enrolled User"],
     datasets: [

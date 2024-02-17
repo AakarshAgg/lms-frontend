@@ -44,7 +44,7 @@ export const verifyUserPayment=createAsyncThunk("/payment/verify",async(data)=>{
     }
 })
 
-export const getPaymentRecord=createAsyncThunk("/payment/record",async()=>{
+export const getPaymentRecord=createAsyncThunk("/payments/record",async()=>{
     try{
         const response=axiosInstance.get("/payments?count=100")
         toast.promise(response,{
@@ -54,7 +54,8 @@ export const getPaymentRecord=createAsyncThunk("/payment/record",async()=>{
             },
             error:"Failed to get payment records"
         })
-        return (await response).data;
+        const res = await response;
+        return res.data;
     }catch(error){
         toast.error("Operation failed",error?.response?.data?.message)
     }
