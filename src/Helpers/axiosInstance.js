@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const BASE_URL="http://localhost:5010/api/v1";
+const BASE_URL="https://lmsbackend-xh5z.onrender.com/api/v1";
 
 const axiosInstance=axios.create();
 
