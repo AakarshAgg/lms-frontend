@@ -15,6 +15,7 @@ function Login() {
     password: "",
   });
 
+  //function to handle the user input
   function handleUserInput(e) {
     const { name, value } = e.target;
     setLoginData({
@@ -23,18 +24,25 @@ function Login() {
     });
   }
 
+  //function to login
   async function onLogin(event) {
     event.preventDefault();
+
+    //checking the empty fields
     if (!loginData.email || !loginData.password) {
       toast.error("Please fill all the details ");
       return;
     }
 
     //dispatch create account action
+    //calling login action
     const response = await dispatch(login(loginData));
-    console.log(response);
+   // console.log(response);
+
+   //redirect to home page if true
     if (response?.payload?.success) navigate("/");
 
+    //clearing the login inputs
     setLoginData({
       email: "",
       password: ""
@@ -80,6 +88,17 @@ function Login() {
               value={loginData.password}
             />
           </div>
+
+           {/* guest account access */}
+          <div
+            onClick={() =>
+              setLoginData({ email: "test@gmail.com", password: "Test@123" })
+            }
+            className="text-center link text-accent cursor-pointer"
+          >
+            Guest Login
+          </div>
+
           <button
             type="submit"
             className="mt-2 bg-yellow-600 hover:bg-yellow-500 transition-all ease-in-out duration-300 rounded-sm py-2 font-semibold text-lg cursor-pointer"
