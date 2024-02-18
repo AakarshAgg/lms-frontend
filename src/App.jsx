@@ -3,6 +3,7 @@ import './App.css'
 import { Route,Routes } from 'react-router-dom'
 
 import RequiredAuth from './Components/Auth/RequireAuth'
+import ForgetPassword from './Components/Password/ForgetPassword'
 import AboutUs from './Pages/AboutUs'
 import Contact from './Pages/Contact'
 import CourseDescription from './Pages/Course/CourseDescription'
@@ -33,6 +34,7 @@ function App() {
       <Route path="/courses" element={<CourseList/>}></Route>
       <Route path='/contact' element={<Contact/>}></Route>
       <Route path='/denied' element={<Denied/>}></Route>
+      <Route path="/forgetpassword" element={<ForgetPassword />} />
 
       <Route path="/course/description" element={<CourseDescription/>}/>
 
