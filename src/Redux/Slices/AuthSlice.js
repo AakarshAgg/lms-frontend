@@ -101,11 +101,33 @@ export const getUserData=createAsyncThunk("/user/details",async()=>{
     }
 })
 
+//function to change password
+export const changePassword=createAsyncThunk("/auth/changePassword",async(userPassword)=>{
+    console.log("uP",userPassword)
+    try {
+        let res=axiosInstance.post("/user/change-password",userPassword);
+        await toast.promise(res,{
+            loading:"Loading...",
+            success:(data)=>{
+                return data?.data?.message;
+            },
+            error:"Failed to change password"
+        });
+    // getting response resolved here
+    res = await res;
+    return res.data;
+    } catch (error) {
+        toast.error(error?.response?.data?.message);
+    }
+}
+);
+
 //function to handle forget password
 
 export const forgetPassword=createAsyncThunk("auth/forgetPassword",async(email)=>{
     try {
      let res=axiosInstance.post("/user/reset",{email})   ;
+     console.log("res",res)
     await toast.promise(res,{
         loading:"Loading...",
         success:(data)=>{
@@ -116,12 +138,34 @@ export const forgetPassword=createAsyncThunk("auth/forgetPassword",async(email)=
     
       // getting response resolved here
       res = await res;
+      console.log("res",res)
       return res.data;
 
     } catch (error) {
         toast.error(error?.response?.data?.message);  
     }
 })
+
+//function to reset the password
+export const resetPassword=createAsyncThunk("/user/reset",async(data)=>{
+    try {
+        let res=axiosInstance.post(`/user/reset/${data.resetToken}`,{
+            password:data.password
+        })
+        toast.promise(res,{
+            loading:"Resetting...",
+            success:(data)=>{
+                return data?.data?.message;
+            },
+            error:"Failed to reset password"
+        });
+        //getting response resolved here
+        res=await res;
+        return res.data;
+    } catch (error) {
+        toast.error(error?.response?.data?.message)
+    }
+});
 
 
 const authSlice=createSlice({
@@ -156,5 +200,5 @@ const authSlice=createSlice({
     }
 })
 
-//export default {} = authSlice.actions
+//export const {} = authSlice.actions
 export default authSlice.reducer

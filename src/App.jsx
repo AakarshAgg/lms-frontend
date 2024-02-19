@@ -3,7 +3,9 @@ import './App.css'
 import { Route,Routes } from 'react-router-dom'
 
 import RequiredAuth from './Components/Auth/RequireAuth'
+import ChangePassword from './Components/Password/ChangePassword'
 import ForgetPassword from './Components/Password/ForgetPassword'
+import ResetPassword from './Components/Password/ResetPassword'
 import AboutUs from './Pages/AboutUs'
 import Contact from './Pages/Contact'
 import CourseDescription from './Pages/Course/CourseDescription'
@@ -35,6 +37,7 @@ function App() {
       <Route path='/contact' element={<Contact/>}></Route>
       <Route path='/denied' element={<Denied/>}></Route>
       <Route path="/forgetpassword" element={<ForgetPassword />} />
+      <Route path="/reset-password/:resetToken" element={<ResetPassword />} />
 
       <Route path="/course/description" element={<CourseDescription/>}/>
 
@@ -53,6 +56,7 @@ function App() {
       <Route path="/checkout" element={<Checkout/>}></Route>
       <Route path="/checkout/success" element={<CheckoutSuccess/>}></Route>
       <Route path="/checkout/fail" element={<CheckoutFailure/>}></Route>
+      <Route path="/changepassword" element={<ChangePassword />}></Route>
       <Route path='/course/displaylectures' element={<Displaylectures/>}></Route>
       </Route>
 

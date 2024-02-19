@@ -42,18 +42,34 @@ useEffect(()=>{
      <p>Subscription:</p>
      <p>{userData?.subscription?.status==="active"?"Active":"Inactive"}</p>
     </div>
+
+{/* button to change the password */}
 <div className="flex items-center justify-between gap-2">
-<Link to="/changepassword" className="w-1/2 bg-yellow-600 hover:bg-yellow-500 transition-all ease-in-out duration-300 rounded-sm font-semibold py-2 cursor-pointer text-center">
-  <button>
-    Change Password
-  </button>
-</Link>
-<Link to="/user/editprofile" className="w-1/2 bg-yellow-600 hover:bg-yellow-500 transition-all ease-in-out duration-300 rounded-sm font-semibold py-2 cursor-pointer text-center">
-  <button>
-    Edit Profile
-  </button>
-</Link>
-</div>
+            <Link
+              to={
+                userData?.email === "test@gmail.com"
+                  ? "/denied"
+                  : "/changepassword"
+              }
+              className="w-1/2 bg-yellow-600 hover:bg-yellow-700 transition-all ease-in-out duration-300 rounded-sm py-2 font-semibold cursor-pointer text-center"
+            >
+              <button>Change Password</button>
+            </Link>
+
+            <Link
+              to={
+                userData?.email === "test@gmail.com"
+                  ? "/denied"
+                  : "/user/editprofile"
+              }
+              className="w-1/2 border border-yellow-600 hover:border-yellow-500 transition-all ease-in-out duration-300 rounded-sm py-2 font-semibold cursor-pointer text-center"
+            >
+              <button>Edit Profile</button>
+            </Link>
+          </div>
+
+
+
 {userData?.subscription?.status === "active" && (
   <button onClick={handleCancellation} className="w-full bg-red-600 hover:bg-red-500 transition-all ease-in-out duration-300 rounded-sm font-semibold py-2 cursor-pointer text-center">
     Cancel Subscription
