@@ -2,6 +2,7 @@ import './App.css'
 
 import { Route,Routes } from 'react-router-dom'
 
+import NotRequireAuth from './Components/Auth/NotRequireAuth'
 import RequiredAuth from './Components/Auth/RequireAuth'
 import ChangePassword from './Components/Password/ChangePassword'
 import ForgetPassword from './Components/Password/ForgetPassword'
@@ -41,9 +42,11 @@ function App() {
 
       <Route path="/course/description" element={<CourseDescription/>}/>
 
+<Route element={<NotRequireAuth/>}>
       <Route path="/signup" element={<Signup/>}></Route>
       <Route path="/login" element={<Login/>}></Route>
-
+      </Route>
+      
       <Route element={<RequiredAuth allowedRoles={["ADMIN"]}/>}>
         <Route path="/course/create" element={<CreateCourse/>} />
       <Route path="/course/addlecture" element={<AddLecture/>} />
