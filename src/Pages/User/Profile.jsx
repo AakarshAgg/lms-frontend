@@ -1,5 +1,4 @@
 import { useEffect } from "react";
-import toast from "react-hot-toast";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 
@@ -14,10 +13,8 @@ function Profile(){
   const userData=useSelector((state)=>state?.auth?.data);
 
    async function handleCancellation(){
-    toast.info("Initiating cancellation")
     await dispatch(cancelCourseBundle())
     await dispatch(getUserData())
-    toast.success("cancellation completed")
     navigate("/")
    }
 

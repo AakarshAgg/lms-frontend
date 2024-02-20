@@ -103,7 +103,6 @@ export const getUserData=createAsyncThunk("/user/details",async()=>{
 
 //function to change password
 export const changePassword=createAsyncThunk("/auth/changePassword",async(userPassword)=>{
-    console.log("uP",userPassword)
     try {
         let res=axiosInstance.post("/user/change-password",userPassword);
         await toast.promise(res,{
